@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body style="background-color: rgb(165, 149, 255);">
+    <div style="width: 97%; max-width: 1000px; margin-top: 30vh;" class="mx-auto">
+        <h1 class="">Random Number</h1>
+        <h6 class="">Your favorite number randomizer 😃</h6>
+        <form>
+            <div class="form-row align-items-center w-100">
+                <div class="col-4">
+                    <input id="min-number" class="form-control" id="inputPassword" placeholder="Mínimo">
+                </div>
+                <div class="col-4">
+                    <input id="result-number" class="form-control" id="inputPassword" value="0" readonly>
+                </div>
+                <div class="col-4">
+                    <input id="max-number" class="form-control" id="inputPassword" placeholder="Máximo">
+                </div>
+            </div>
+        </form>
+        <button onclick="randomizeNumbers()" type="submit" class="btn btn-primary w-100 my-2 p-3">RANDOMIZAR</button>
+    </div>
+    <script>
+        const min = document.getElementById('min-number');
+        const max = document.getElementById('max-number');
+        const result = document.getElementById('result-number');
+
+        function randomizeNumbers() {
+            // Validador de números
+            if (max.value < min.value) {
+                const minStored = parseInt(min.value);
+                min.value = max.value;
+                max.value = minStored;
+            }
+
+            // Gerador
+            const generated = Math.floor(Math.random() * (parseInt(max.value) - parseInt(min.value) + 1)) + parseInt(min.value);
+            result.value = generated;
+        }
+    </script>
+</body>
+
+</html>
